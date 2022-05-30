@@ -26,7 +26,7 @@ cl_base* cl_base::kto_otez() {
 }
 std::unique_ptr<cl_base> cl_base::uproot(){
   assert(p_predok);
-  auto& ch = p_predok->children;
+  auto& ch = p_predok->spinogrizi;
   std::unique_ptr<cl_base> a = nullptr;
   for (auto& spin : ch){
     if( this==spin.get()){
