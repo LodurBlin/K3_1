@@ -34,6 +34,7 @@ public:
 	void detdom(cl_base*); //переопределение головного объекта
 
 	cl_base* search(std::string wanted);
+	void move_to(cl_base* destination);
 
 };
 #endif
