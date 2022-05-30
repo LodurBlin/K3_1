@@ -31,10 +31,8 @@ public:
 
 	cl_base* kto_otez();//получение указателя на головной объект
 
-	void detdom(cl_base*); //переопределение головного объекта
-
 	cl_base* search(std::string wanted);
-	void move_to(cl_base* destination);
+	void move_to(cl_base* destination);//переопределение головного объекта
 
 };
 #endif
