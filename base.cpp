@@ -21,28 +21,26 @@ void cl_base::print_hierarchy() const {
 
 }
 
-void cl_base::detdom(cl_base* new_predok) { //дети старого дерево, удалить нулевые указатели
-	if (new_predok) {
-		this->p_predok = new_predok;
-		for (auto& spin : p_predok->spinogrizi) {
-			if (spin.get() == this) {
-				new_predok->add_spinogriz(std::move(spin));
-			}
-		}
-	}
-	else this->p_predok = 0;
-}
 cl_base* cl_base::kto_otez() {
 	return p_predok;
 }
-//????????????????????????????????//
-cl_base* cl_base::search(std::string wanted) {
-	if ((this)->get_name()==wanted){
-		return this;
-	}
-	for (const auto& spin : spinogrizi) {
-		auto res = spin -> search(wanted);
-		if (res) return res;
-	}
-	return nullptr;
+std::unique_ptr<cl_base> cl_base::uproot(){
+  assert(p_predok);
+  auto& ch = p_predok->children;
+  std::unique_ptr<cl_base> a = nullptr;
+  for (auto& spin : ch){
+    if( this==spin.get()){
+      std::swap(a, spin);
+    }
+  }
+  
+  ch.erase(std::remove(ch.begin(), ch.end(),  0), ch.end());
+  return a;
 }
+
+
+void cl_base::move_to(cl_base* destination) {
+  destination->add_spinogriz(uproot());
+}
+
+
