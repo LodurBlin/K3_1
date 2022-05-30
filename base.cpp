@@ -21,7 +21,7 @@ void cl_base::print_hierarchy() const {
 
 }
 
-void cl_base::detdom(cl_base* new_predok) {
+void cl_base::detdom(cl_base* new_predok) { //дети старого дерево, удалить нулевые указатели
 	if (new_predok) {
 		this->p_predok = new_predok;
 		for (auto& spin : p_predok->spinogrizi) {
@@ -37,13 +37,11 @@ cl_base* cl_base::kto_otez() {
 }
 //????????????????????????????????//
 cl_base* cl_base::search(std::string wanted) {
-	for (const auto& spin : spinogrizi) {
-		if ((spin)->get_name == wanted) {
-			return spin;
-			break;
-		}
-		spin -> search(wanted);
-		return nullptr;
+	if ((this)->get_name()==wanted){
+		return this;
 	}
-	
+	for (const auto& spin : spinogrizi) {
+		spin -> search(wanted);
+	}
+	return nullptr;
 }
