@@ -41,7 +41,8 @@ cl_base* cl_base::search(std::string wanted) {
 		return this;
 	}
 	for (const auto& spin : spinogrizi) {
-		spin -> search(wanted);
+		auto res = spin -> search(wanted);
+		if (res) return res;
 	}
 	return nullptr;
 }
