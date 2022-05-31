@@ -7,6 +7,6 @@ class cl_app : public cl_base
 public:
 	cl_app() : cl_base("") {};
 	void derevo();
-	void print() const { print_hierarchy(); };
+	void print() const { print_hierarchy(0); };
 };
 #endif
