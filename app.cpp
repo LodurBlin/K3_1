@@ -12,8 +12,8 @@ void cl_app::derevo() {
 		string predok, spinogriz;
 		cin >> predok;
 		cin >> spinogriz;
-		if (predok == spinogriz) {
-			break;
+		if (predok == "endtree") {
+			break;//prinimaem sost
 		}
 		if (predok != cur_predok->get_name()) {
 			cur_predok = (cur_predok)->spinogrizi.back().get();
