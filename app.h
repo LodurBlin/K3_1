@@ -9,7 +9,7 @@ public:
 	void derevo(); //postr
 	void print() { print_hierarchy(0); }; //zapuck
 	void pechat() { 
-		std::cout << "The tree of objects and their readiness\n";
+		std::cout << "\nThe tree of objects and their readiness";
 		print_sost(0); 
 	};
 };
