@@ -1,5 +1,4 @@
 #include "cl_base.h"
-#include "nodes.h"
 #include <iostream>
 #include <cassert>
 #include <algorithm>
@@ -12,14 +11,27 @@ void cl_base::add_spinogriz(std::unique_ptr <cl_base>&& spinogriz) {
 }
 
 void cl_base::print_hierarchy(int offset) {
+	std::cout << "\n" << std::string(offset * 4, ' ') << this->ob_name;
 	if (spinogrizi.size() == 0) {
 		return;
 	}
-	std::cout << "\n" << std::string(offset * 4, ' ') << this->ob_name;
 	for (const auto& spin : spinogrizi) {
-		(spin)->print_hierarchy(offset++);
+		(spin)->print_hierarchy(++offset);
+		--offset;
 	}
 }
+
+void cl_base::print_sost(int offset) {
+	std::cout << "\n" << std::string(offset * 4, ' ') << this->ob_name << this->readiness;
+	if (spinogrizi.size() == 0) {
+		return;
+	}
+	for (const auto& spin : spinogrizi) {
+		(spin)->print_sost(++offset);
+		--offset;
+	}
+}
+
 
 cl_base* cl_base::kto_otez() {
 	return p_predok;
@@ -52,19 +64,10 @@ cl_base* cl_base::search(std::string wanted) {
 	return nullptr;
 }
 
-void cl_base::print_sost(int offset) {
-	if (spinogrizi.size() == 0) {
-		return;
-	}
-	std::cout << "\n" << std::string(offset * 4, ' ') << this->ob_name<< this->readiness;
-	for (const auto& spin : spinogrizi) {
-		(spin)->print_hierarchy(offset++);
-	}
-}
 
 
 void cl_base::set(int n) {
-	if ((p_predok)->sost != 0) {
+	if ((p_predok==nullptr) or p_predok->sost != 0) {
 		sost = n;
 		if (n != 0) {
 			readiness = " is ready";
@@ -77,7 +80,11 @@ void cl_base::preparing() {
 	int s;
 	std::string name;
 	do {
-		std::cin >> name >>  s;
+		std::cin >> name;
+		if (name == "stop") {
+			break;
+		}
+		std::cin >> s;
 		this->search(name)->set(s);
-	} while (name != "stop");
+	} while (true);
 }
