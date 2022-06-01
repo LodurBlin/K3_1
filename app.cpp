@@ -20,7 +20,7 @@ void cl_app::derevo() {
 		}
 		cin >> spinogriz >> clas;
 		if (predok != cur_predok->get_name()) {
-			cur_predok = (cur_predok)->search(predok);
+			cur_predok = (root)->search(predok);
 		}
 		switch (clas) { //создаем объект нужного класса и запихиваем в дерево
 		case 2:
