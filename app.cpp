@@ -1,6 +1,9 @@
 #include "cl_app.h"
-#include "nodes.h"
-#include "cl_base.cpp"
+#include "_2.h"
+#include "_3.h"
+#include "_4.h"
+#include "_5.h"
+#include "_6.h"
 #include <iostream>
 using namespace std;
 
@@ -39,10 +42,10 @@ void cl_app::derevo() {
 			(cur_predok)->add_spinogriz(std::unique_ptr<cl_base>(new _6(spinogriz)));
 				break;
 		default:
-			cout << "фсё";
+			cout << "Wrong class :(";
 				break;
 		}
 	} while (true);
-	cout << root_name;
+	cout << "Object tree";
 };
 
