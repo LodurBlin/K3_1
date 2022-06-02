@@ -38,6 +38,8 @@ public:
 	void set(int n); //ustanovit otmetku
 
 	void preparing();//ввод готовности
+	
+	void off();
 };
 #endif
 
