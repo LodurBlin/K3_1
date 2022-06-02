@@ -86,6 +86,7 @@ void cl_base::preparing() {
 
 void cl_base::off(){
 	readiness = " is not ready";
+	sost=0;
 	for (const auto& spin : spinogrizi){
 		spin->off();
 	}
