@@ -67,12 +67,13 @@ cl_base* cl_base::search(std::string wanted) {
 
 
 void cl_base::set(int n) {
-	if ((p_predok==nullptr) or p_predok->sost != 0) {
+if ((p_predok==nullptr) or (p_predok->sost != 0)) {
 		sost = n;
 		if (n != 0) {
 			readiness = " is ready";
+		} else {
+			off();
 		}
-		
 	}
 }
 
