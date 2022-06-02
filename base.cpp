@@ -79,7 +79,14 @@ void cl_base::set(int n) {
 void cl_base::preparing() {
 	int s;
 	std::string name;
-	while (std::cin >> name >> s) {
+	while(std::cin>>name>>s) {
 		this->search(name)->set(s);
+	} 
+}
+
+void cl_base::off(){
+	readiness = " is not ready";
+	for (const auto& spin : spinogrizi){
+		spin->off();
 	}
 }
