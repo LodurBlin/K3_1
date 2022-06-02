@@ -46,6 +46,5 @@ void cl_app::derevo() {
 				break;
 		}
 	} while (true);
-	cout << "Object tree";
 };
 
