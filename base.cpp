@@ -79,12 +79,7 @@ void cl_base::set(int n) {
 void cl_base::preparing() {
 	int s;
 	std::string name;
-	do {
-		std::cin >> name;
-		if (name == "stop") {
-			break;
-		}
-		std::cin >> s;
+	while (std::cin >> name >> s) {
 		this->search(name)->set(s);
-	} while (true);
+	}
 }
